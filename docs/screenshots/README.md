@@ -25,3 +25,8 @@
 | 21_docker-cmd-inside-container-error.png | 컨테이너 안에서 docker 명령 실행 → `command not found` (트러블슈팅 #4) |
 | 22_docker-exec-vs-attach.png | exec 후 exit → Up 유지 / attach 후 exit → Exited |
 | 23_docker-logs-start-stats-stop.png | `docker logs`, `start`, `stats --no-stream`, `stop` |
+| 24_nano-filename-mistake.png | nano 저장 시 파일명이 `cat index.html`로 저장됨 (트러블슈팅 #5) |
+| 25_dockerfile-nano.png | nano로 Dockerfile 직접 작성 |
+| 26_docker-build-run-ps.png | `docker build -t my-web:1.0 .`, `docker run -p 8080:80`, `docker ps` |
+| 27_curl-localhost-8080.png | `curl localhost:8080` 응답 확인 |
+| 28_browser-localhost-8080.png | 브라우저 `localhost:8080` 접속 화면 (주소창 포함, 북마크바 제거) |

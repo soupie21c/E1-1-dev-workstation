@@ -19,3 +19,9 @@
 | 15_git-clone.png | 저장소 clone 및 `ls -a` |
 | 16_terminal-pwd-ls-mkdir-cd.png | `pwd`, `ls -la`, `mkdir`, `cd` 실습 |
 | 17_terminal-file-ops.png | `touch`, `echo`, `cat`, `cp`, `mv`, `rm` 실습 |
+| 18_chmod-file-dir-before-after.png | 파일(644→755)·폴더(755→700) 권한 변경 전/후 |
+| 19_docker-hello-world.png | `docker run hello-world` 성공, `docker ps -a` |
+| 20_docker-images-ubuntu-container.png | `docker images`, ubuntu 컨테이너 진입 후 `ls`·`echo`·`exit` |
+| 21_docker-cmd-inside-container-error.png | 컨테이너 안에서 docker 명령 실행 → `command not found` (트러블슈팅 #4) |
+| 22_docker-exec-vs-attach.png | exec 후 exit → Up 유지 / attach 후 exit → Exited |
+| 23_docker-logs-start-stats-stop.png | `docker logs`, `start`, `stats --no-stream`, `stop` |

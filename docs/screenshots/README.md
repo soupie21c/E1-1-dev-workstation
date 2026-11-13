@@ -30,3 +30,4 @@
 | 26_docker-build-run-ps.png | `docker build -t my-web:1.0 .`, `docker run -p 8080:80`, `docker ps` |
 | 27_curl-localhost-8080.png | `curl localhost:8080` 응답 확인 |
 | 28_browser-localhost-8080.png | 브라우저 `localhost:8080` 접속 화면 (주소창 포함, 북마크바 제거) |
+| 29_bind-mount-after-and-volume-persistence.png | 바인드 마운트 호스트 수정 후 반영 확인 + 볼륨 생성·연결·컨테이너 삭제 후 데이터 유지 |

@@ -319,15 +319,15 @@ VS Code에서 WSL(Ubuntu)로 저장소를 열고 GitHub 계정으로 로그인�
 
 ### 2) Ubuntu 사용자명 `admin` 생성 실패
 
-- **문제**: Ubuntu 첫 실행 시 사용자명을 `admin`으로 입력하니 생성에 실패했다. ([06](docs/screenshots/06_ubuntu-user-admin-exists-error.png))
+- **문제**: Ubuntu 첫 실행 시 사용자명을 `admin`으로 입력하니 `fatal: The group 'admin' already exists.` 오류가 나며 생성에 실패했다. ([06](docs/screenshots/06_ubuntu-user-admin-exists-error.png))
 - **원인 가설**: Ubuntu에 이미 `admin`이라는 시스템 그룹이 있어서 같은 이름으로 사용자 그룹을 만들 수 없다.
 - **해결**: 다른 이름(`suji`)으로 생성하니 정상적으로 만들어졌다. ([07](docs/screenshots/07_ubuntu-user-created.png))
 
-### 3) Docker 설치 파일 "다른 프로그램에서 사용 중"
+### 3) Docker 설치 파일 "다른 응용 프로그램에서 사용 중"
 
-- **문제**: Docker Desktop 설치 파일을 실행하니 파일이 사용 중이라는 오류가 났다. ([09](docs/screenshots/09_docker-installer-file-in-use.png))
-- **원인 가설**: 다운로드가 끝나지 않았거나, 이전에 실행한 설치 프로그램이나 백신 검사가 파일을 잡고 있다.
-- **해결**: 실행 중인 설치 프로그램을 닫고 다시 실행해서 설치를 진행했다. 설치 옵션은 Per-user, WSL 2를 선택했다. ([10](docs/screenshots/10_docker-install-config-wsl2.png))
+- **문제**: 다운로드 폴더에서 `Docker Desktop Installer.exe`를 실행하자 "이 파일을 다른 응용 프로그램에서 사용 중입니다." 오류 창이 떴다. ([09](docs/screenshots/09_docker-installer-file-in-use.png))
+- **원인 가설**: 다운로드 직후라 브라우저나 백신 검사가 파일을 아직 잡고 있었거나, 설치 파일을 두 번 실행한 것으로 추정한다. 정확한 원인은 확인하지 못했다.
+- **해결**: 오류 창을 닫고 잠시 뒤 다시 실행해 설치를 진행했다. 설치 옵션은 Per-user, WSL 2를 선택했다. ([10](docs/screenshots/10_docker-install-config-wsl2.png))
 
 ### 4) `docker info`: permission denied
 
@@ -345,11 +345,11 @@ VS Code에서 WSL(Ubuntu)로 저장소를 열고 GitHub 계정으로 로그인�
 - **원인**: 프롬프트가 `root@63074b35d6a0:/#`로, 이미 **컨테이너 안**이었다. ubuntu 이미지에는 docker CLI가 없다.
 - **해결**: `exit`로 호스트(`suji@...$`)로 나온 뒤 docker 명령을 실행했다. 이후 프롬프트로 "지금 어디에 있는지"를 먼저 확인하는 습관을 들였다.
 
-### 6) nano 저장 시 파일 이름이 `cat index.html`로 저장됨
+### 6) nano 저장 시 파일 이름이 `'cat index.html'`로 저장됨
 
-- **문제**: `nano index.html`로 작성 후 `ls`를 하니 `'cat index.html'`이라는 파일이 생겨 있었다. ([24](docs/screenshots/24_nano-filename-mistake.png))
-- **원인**: 저장할 때 나오는 "File Name to Write:" 입력칸에 `cat index.html`을 명령어처럼 입력해서 그 문자열이 그대로 파일 이름이 됐다.
-- **해결**: `mv 'cat index.html' index.html`처럼 따옴표로 감싸 이름을 바꿨다. 이후 저장할 때는 파일 이름만 확인하고 Enter를 눌렀다.
+- **문제**: `web/`에서 `nano index.html`로 작성하고 저장한 뒤 `ls`로 확인하자 `index.html`이 아니라 `'cat index.html'`이라는 파일이 생겨 있었다. ([24](docs/screenshots/24_nano-filename-mistake.png))
+- **원인**: 저장할 때 nano의 파일 이름 입력칸(`File Name to Write`)에 `cat index.html`이 그대로 들어가 파일 이름이 됐다. 이름에 공백이 있어서 `ls`가 따옴표를 붙여 보여 줬다.
+- **해결**: `mv 'cat index.html' index.html`로 이름을 고쳤다. 이후에는 저장 전에 파일 이름 칸을 확인하고, 저장 후 `ls`로 한 번 더 확인한다.
 
 ### 7) (두 번째 PC) Docker는 실행 중인데 WSL에서 `docker: command not found`
 
